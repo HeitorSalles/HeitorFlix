@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from 'C:/Users/Heitor/Documents/GitHub/HeitorFlix/src/assets/img/Logo-HEITORFLIX.png';
+import Logo from '../../assets/img/Logo-HEITORFLIX.png';
 import '../Menu/Menu.css';
 import Button from '../Button';
 
