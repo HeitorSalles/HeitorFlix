@@ -1,7 +1,9 @@
 import React from 'react';
-import Logo from '../../components/assets/img/Logo-HEITORFLIX.png';
-import './Menu.css';
-import ButtonLink from '../components/ButtonLink';
+import Logo from 'C:/Users/Heitor/Documents/GitHub/HeitorFlix/src/assets/img/Logo-HEITORFLIX.png';
+import '../Menu/Menu.css';
+import Button from '../Button';
+
+//import ButtonLink from '../Menu/components/ButtonLink';
 
 function Menu () {
     return (
@@ -10,9 +12,9 @@ function Menu () {
                 <img className="Logo" src={Logo} alt="HeitorFlix logo" />
             </a>
 
-            <ButtonLink className="ButtonLink" href="/">
+            <Button as="a" className="ButtonLink" href="/">
                 Novo Vídeo
-            </ButtonLink>
+            </Button>
         </nav>
     );
 }
