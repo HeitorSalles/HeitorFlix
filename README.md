@@ -6,4 +6,4 @@ Learning React and building a [website](https://heitorflix-git-master.heitorsall
 
 [Link](https://heitorflix-git-master.heitorsalles.vercel.app)
 
-[![HeitorFlix Front-End](/src/assets/img/heitorflix.png)]
+[![HeitorFlix Front-End](/src/assets/img/heitorflix.png)](https://heitorflix-git-master.heitorsalles.vercel.app)
