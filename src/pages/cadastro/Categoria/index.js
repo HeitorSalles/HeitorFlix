@@ -9,30 +9,27 @@ function CadastroCategoria() {
     nome: '',
     descricao: '',
     cor: '',
-  }
+  };
   const [categorias, setCategorias] = useState([]);
   const [values, setValues] = useState(valoresIniciais);
-
 
   function setValue(chave, valor) {
     setValues({
       ...values,
       [chave]: valor,
-    })
+    });
   }
 
-  function handleChange(infosDoEvento) {
+  function handleChange(parms) {
     setValue(
-      infosDoEvento.target.getAttribute('name'),
-      infosDoEvento.target.value
+      parms.target.getAttribute('name'),
+      parms.target.value,
     );
   }
 
-  // ============
-
   useEffect(() => {
     if(window.location.href.includes('localhost')) {
-      const URL = 'https://heitorflix.herokuapp.com/categorias'; 
+      const URL = 'http://localhost:8080/categorias'; 
       fetch(URL)
        .then(async (respostaDoServer) =>{
         if(respostaDoServer.ok) {
@@ -47,18 +44,20 @@ function CadastroCategoria() {
 
   return (
     <PageDefault>
-      <h1>Cadastro de Categoria: {values.nome}</h1>
+      <h1>
+        Cadastro de Categoria:&nbsp;
+        {values.nome}
+      </h1>
 
-      <form onSubmit={function handleSubmit(infosDoEvento) {
-          infosDoEvento.preventDefault();
-
-          setCategorias([
-            ...categorias,
-            values
-          ]);
-
-          setValues(valoresIniciais)
-      }}>
+      <form onSubmit={function handleSubmit(params) {
+        params.preventDefault();
+        setCategorias([
+          ...categorias,
+          values,
+        ]);
+        setValues(valoresIniciais);
+      }}
+      >
 
         <FormField
           label="Nome da Categoria"
@@ -69,8 +68,8 @@ function CadastroCategoria() {
         />
 
         <FormField
-          label="Descrição:"
-          type="????"
+          label="Descrição"
+          type="textarea"
           name="descricao"
           value={values.descricao}
           onChange={handleChange}
@@ -87,24 +86,22 @@ function CadastroCategoria() {
         <Button>
           Cadastrar
         </Button>
-      </form>
-      
 
-      <ul>
-        {categorias.map((categoria, indice) => {
-          return (
-            <li key={`${categoria}${indice}`}>
+        <ul>
+          {categorias.map((categoria) => (
+            <li key={`${categoria.titulo}`}>
               {categoria.titulo}
             </li>
-          )
-        })}
-      </ul>
+          ))}
+        </ul>
 
+      </form>
       <Link to="/">
-        Ir para home
+        Ir para Home
       </Link>
+
     </PageDefault>
-  )
+  );
 }
 
 export default CadastroCategoria;
